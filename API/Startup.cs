@@ -1,3 +1,4 @@
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +24,7 @@ namespace API
 
             services.AddControllers();
             services.AddDbContext<StoreContext>(x => x.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IPhotoshootRepository, PhotoshootRepository>();
 
         }
 
