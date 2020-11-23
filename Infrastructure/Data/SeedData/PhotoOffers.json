@@ -1,0 +1,102 @@
+[
+  {
+    "Name": "Maximum Wedding Package",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+    "Price": 2000,
+    "Duration": 10,
+    "PictureUrl": "images/photoshootsoffers/sb-ang1.png",
+    "NumberOfPhotos": 1500,
+    "IsAlbumIncluded": true,
+    "PhotoOfferCategoryId": 5
+  },
+  {
+    "Name": "Medium Wedding Package",
+    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
+    "Price": 1700,
+    "Duration": 7,
+    "PictureUrl": "images/photoshootsoffers/sb-ang2.png",
+    "NumberOfPhotos": 500,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 5
+  },
+  {
+    "Name": "Starter Wedding Package",
+    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc.",
+    "Price": 1300,
+    "Duration": 3,
+    "PictureUrl": "images/photoshootsoffers/sb-core1.png",
+    "NumberOfPhotos": 200,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 5
+  },
+  {
+    "Name": "Standard Portrait Photoshoot",
+    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+    "Price": 150,
+    "Duration": 1,
+    "PictureUrl": "images/photoshootsoffers/sb-core2.png",
+    "NumberOfPhotos": 25,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 1
+  },
+  {
+    "Name": "School Prom Photoshoot",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.",
+    "Price": 300,
+    "Duration": 2,
+    "PictureUrl": "images/photoshootsoffers/sb-react1.png",
+    "NumberOfPhotos": 40,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 1
+  },
+  {
+    "Name": "Family Photoshoot",
+    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
+    "Price": 350,
+    "Duration": 1,
+    "PictureUrl": "images/photoshootsoffers/sb-ts1.png",
+    "NumberOfPhotos": 20,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 3
+  },
+  {
+    "Name": "Love Story",
+    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero.",
+    "Price": 200,
+    "Duration": 1,
+    "PictureUrl": "images/photoshootsoffers/hat-core1.png",
+    "NumberOfPhotos": 20,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 2
+  },
+  {
+    "Name": "Standard Couples Phootoshoot",
+    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc.",
+    "Price": 200,
+    "Duration": 1,
+    "PictureUrl": "images/photoshootsoffers/hat-react1.png",
+    "NumberOfPhotos": 20,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 2
+  },
+  {
+    "Name": "Baby is coming!",
+    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero.",
+    "Price": 240,
+    "Duration": 2,
+    "PictureUrl": "images/photoshootsoffers/hat-react2.png",
+    "NumberOfPhotos": 30,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 4
+  },
+  {
+    "Name": "Company Event",
+    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
+    "Price": 200,
+    "Duration": 1,
+    "PictureUrl": "images/photoshootsoffers/glove-code1.png",
+    "NumberOfPhotos": 100,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 6
+  }
+]

@@ -18,7 +18,7 @@ namespace Infrastructure.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Core.Entities.Photoshoot", b =>
+            modelBuilder.Entity("Core.Entities.PhotoOffer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,12 +30,21 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsAlbumIncluded")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<int>("PhotoshootCategoryId")
+                    b.Property<int>("NumberOfPhotos")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PhotoOfferCategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("PictureUrl")
@@ -47,12 +56,12 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PhotoshootCategoryId");
+                    b.HasIndex("PhotoOfferCategoryId");
 
-                    b.ToTable("Photoshoots");
+                    b.ToTable("PhotoOffers");
                 });
 
-            modelBuilder.Entity("Core.Entities.PhotoshootCategory", b =>
+            modelBuilder.Entity("Core.Entities.PhotoOfferCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,14 +73,14 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PhotoshootCategories");
+                    b.ToTable("PhotoOffersCategories");
                 });
 
-            modelBuilder.Entity("Core.Entities.Photoshoot", b =>
+            modelBuilder.Entity("Core.Entities.PhotoOffer", b =>
                 {
-                    b.HasOne("Core.Entities.PhotoshootCategory", "PhotoshootCategory")
+                    b.HasOne("Core.Entities.PhotoOfferCategory", "PhotoOfferCategory")
                         .WithMany()
-                        .HasForeignKey("PhotoshootCategoryId")
+                        .HasForeignKey("PhotoOfferCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

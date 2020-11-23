@@ -7,7 +7,7 @@ namespace Infrastructure.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "PhotoshootCategories",
+                name: "PhotoOffersCategories",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -16,11 +16,11 @@ namespace Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PhotoshootCategories", x => x.Id);
+                    table.PrimaryKey("PK_PhotoOffersCategories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Photoshoots",
+                name: "PhotoOffers",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -28,33 +28,36 @@ namespace Infrastructure.Data.Migrations
                     Name = table.Column<string>(maxLength: 150, nullable: false),
                     Description = table.Column<string>(maxLength: 200, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Duration = table.Column<int>(nullable: false),
                     PictureUrl = table.Column<string>(nullable: false),
-                    PhotoshootCategoryId = table.Column<int>(nullable: false)
+                    NumberOfPhotos = table.Column<int>(nullable: false),
+                    IsAlbumIncluded = table.Column<bool>(nullable: false),
+                    PhotoOfferCategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Photoshoots", x => x.Id);
+                    table.PrimaryKey("PK_PhotoOffers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Photoshoots_PhotoshootCategories_PhotoshootCategoryId",
-                        column: x => x.PhotoshootCategoryId,
-                        principalTable: "PhotoshootCategories",
+                        name: "FK_PhotoOffers_PhotoOffersCategories_PhotoOfferCategoryId",
+                        column: x => x.PhotoOfferCategoryId,
+                        principalTable: "PhotoOffersCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Photoshoots_PhotoshootCategoryId",
-                table: "Photoshoots",
-                column: "PhotoshootCategoryId");
+                name: "IX_PhotoOffers_PhotoOfferCategoryId",
+                table: "PhotoOffers",
+                column: "PhotoOfferCategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Photoshoots");
+                name: "PhotoOffers");
 
             migrationBuilder.DropTable(
-                name: "PhotoshootCategories");
+                name: "PhotoOffersCategories");
         }
     }
 }

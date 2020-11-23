@@ -1,6 +1,6 @@
 ﻿namespace Core.Entities
 {
-    public class PhotoshootCategory : BaseEntity
+    public class PhotoOfferCategory : BaseEntity
     {
         public string Name { get; set; }
     }

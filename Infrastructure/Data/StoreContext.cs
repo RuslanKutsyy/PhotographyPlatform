@@ -10,8 +10,8 @@ namespace Infrastructure.Data
         {
         }
 
-        public DbSet<Photoshoot> Photoshoots { get; set; }
-        public DbSet<PhotoshootCategory> PhotoshootCategories { get; set; }
+        public DbSet<PhotoOffer> PhotoOffers { get; set; }
+        public DbSet<PhotoOfferCategory> PhotoOffersCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
