@@ -25,6 +25,7 @@ namespace API
             services.AddControllers();
             services.AddDbContext<StoreContext>(x => x.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IPhotoOfferRepository, PhotoOffersRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
         }
 
