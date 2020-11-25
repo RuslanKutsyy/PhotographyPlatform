@@ -9,20 +9,23 @@ using System;
 using Core.Specifications;
 using API.Dtos;
 using System.Linq;
+using AutoMapper;
 
 namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PhotoOffersController : ControllerBase
+    public class PhotoOffersController : BaseAPIController
     {
         private readonly IGenericRepository<PhotoOffer> photooffersRepo;
         private readonly IGenericRepository<PhotoOfferCategory> categoriesRepo;
+        private readonly IMapper mapper;
 
-        public PhotoOffersController(IGenericRepository<PhotoOffer> photooffersRepo, IGenericRepository<PhotoOfferCategory> categoriesRepo)
+        public PhotoOffersController(IGenericRepository<PhotoOffer> photooffersRepo, IGenericRepository<PhotoOfferCategory> categoriesRepo, IMapper mapper)
         {
             this.photooffersRepo = photooffersRepo;
             this.categoriesRepo = categoriesRepo;
+            this.mapper = mapper;
         }
         [HttpGet]
         public async Task<ActionResult<List<PhotoOffer>>> GetPhotoOffers()
@@ -30,18 +33,7 @@ namespace API.Controllers
             var spec = new PhotoOffersWithCategoriesSpecification();
             var photoshoots = await photooffersRepo.ListAsync(spec);
 
-            return Ok(photoshoots.Select(x => new PhotoOfferToReturnDto
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Description = x.Description,
-                Price = x.Price,
-                Duration = x.Duration,
-                PictureUrl = x.PictureUrl,
-                NumberOfPhotos = x.NumberOfPhotos,
-                IsAlbumIncluded = x.IsAlbumIncluded,
-                PhotoOfferCategory = x.PhotoOfferCategory.Name
-            }).ToList());
+            return Ok(mapper.Map<IReadOnlyList<PhotoOffer>, IReadOnlyList<PhotoOfferToReturnDto>>(photoshoots));
         }
 
         [HttpGet("{id}")]
@@ -50,18 +42,7 @@ namespace API.Controllers
             var spec = new PhotoOffersWithCategoriesSpecification(id);
             var photooffer = await photooffersRepo.GetEntityWithSpec(spec);
 
-            return new PhotoOfferToReturnDto
-            {
-                Id = photooffer.Id,
-                Name = photooffer.Name,
-                Description = photooffer.Description,
-                Price = photooffer.Price,
-                Duration = photooffer.Duration,
-                PictureUrl = photooffer.PictureUrl,
-                NumberOfPhotos = photooffer.NumberOfPhotos,
-                IsAlbumIncluded = photooffer.IsAlbumIncluded,
-                PhotoOfferCategory = photooffer.PhotoOfferCategory.Name
-            };
+            return mapper.Map<PhotoOffer, PhotoOfferToReturnDto>(photooffer);
         }
 
         [HttpGet("categories")]
