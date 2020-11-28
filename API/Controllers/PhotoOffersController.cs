@@ -10,6 +10,8 @@ using Core.Specifications;
 using API.Dtos;
 using System.Linq;
 using AutoMapper;
+using API.Errors;
+using Microsoft.AspNetCore.Http;
 
 namespace API.Controllers
 {
@@ -37,10 +39,17 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<PhotoOfferToReturnDto>> GetPhotoOffer(int id)
         {
             var spec = new PhotoOffersWithCategoriesSpecification(id);
             var photooffer = await photooffersRepo.GetEntityWithSpec(spec);
+
+            if (photooffer == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
 
             return mapper.Map<PhotoOffer, PhotoOfferToReturnDto>(photooffer);
         }
