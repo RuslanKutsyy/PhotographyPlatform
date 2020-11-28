@@ -21,18 +21,20 @@ namespace API.Controllers
     {
         private readonly IGenericRepository<PhotoOffer> photooffersRepo;
         private readonly IGenericRepository<PhotoOfferCategory> categoriesRepo;
+        private readonly IGenericRepository<PhotoOfferType> typeRepo;
         private readonly IMapper mapper;
 
-        public PhotoOffersController(IGenericRepository<PhotoOffer> photooffersRepo, IGenericRepository<PhotoOfferCategory> categoriesRepo, IMapper mapper)
+        public PhotoOffersController(IGenericRepository<PhotoOffer> photooffersRepo, IGenericRepository<PhotoOfferCategory> categoriesRepo, IGenericRepository<PhotoOfferType> typeRepo, IMapper mapper)
         {
             this.photooffersRepo = photooffersRepo;
             this.categoriesRepo = categoriesRepo;
+            this.typeRepo = typeRepo;
             this.mapper = mapper;
         }
         [HttpGet]
-        public async Task<ActionResult<List<PhotoOffer>>> GetPhotoOffers()
+        public async Task<ActionResult<List<PhotoOffer>>> GetPhotoOffers(string sort)
         {
-            var spec = new PhotoOffersWithCategoriesSpecification();
+            var spec = new PhotoOffersWithCategoriesAndTypesSpecification(sort);
             var photoshoots = await photooffersRepo.ListAsync(spec);
 
             return Ok(mapper.Map<IReadOnlyList<PhotoOffer>, IReadOnlyList<PhotoOfferToReturnDto>>(photoshoots));
@@ -43,7 +45,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<PhotoOfferToReturnDto>> GetPhotoOffer(int id)
         {
-            var spec = new PhotoOffersWithCategoriesSpecification(id);
+            var spec = new PhotoOffersWithCategoriesAndTypesSpecification(id);
             var photooffer = await photooffersRepo.GetEntityWithSpec(spec);
 
             if (photooffer == null)
@@ -59,6 +61,13 @@ namespace API.Controllers
         {
             var categories = await categoriesRepo.ListAllAsync();
             return Ok(categories);
+        }
+
+        [HttpGet("types")]
+        public async Task<ActionResult<IReadOnlyList<PhotoOfferCategory>>> GetPhotoOfferTypesAsync()
+        {
+            var types = await typeRepo.ListAllAsync();
+            return Ok(types);
         }
     }
 }

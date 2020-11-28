@@ -7,7 +7,8 @@
     "PictureUrl": "images/photoshootsoffers/sb-ang1.png",
     "NumberOfPhotos": 1500,
     "IsAlbumIncluded": true,
-    "PhotoOfferCategoryId": 5
+    "PhotoOfferCategoryId": 5,
+    "PhotoOfferTypeId": 2
   },
   {
     "Name": "Medium Wedding Package",
@@ -16,8 +17,9 @@
     "Duration": 7,
     "PictureUrl": "images/photoshootsoffers/sb-ang2.png",
     "NumberOfPhotos": 500,
-    "IsAlbumIncluded": false,
-    "PhotoOfferCategoryId": 5
+    "IsAlbumIncluded": true,
+    "PhotoOfferCategoryId": 5,
+    "PhotoOfferTypeId": 2
   },
   {
     "Name": "Starter Wedding Package",
@@ -27,7 +29,8 @@
     "PictureUrl": "images/photoshootsoffers/sb-core1.png",
     "NumberOfPhotos": 200,
     "IsAlbumIncluded": false,
-    "PhotoOfferCategoryId": 5
+    "PhotoOfferCategoryId": 5,
+    "PhotoOfferTypeId": 2
   },
   {
     "Name": "Standard Portrait Photoshoot",
@@ -37,7 +40,8 @@
     "PictureUrl": "images/photoshootsoffers/sb-core2.png",
     "NumberOfPhotos": 25,
     "IsAlbumIncluded": false,
-    "PhotoOfferCategoryId": 1
+    "PhotoOfferCategoryId": 1,
+    "PhotoOfferTypeId": 2
   },
   {
     "Name": "School Prom Photoshoot",
@@ -47,7 +51,8 @@
     "PictureUrl": "images/photoshootsoffers/sb-react1.png",
     "NumberOfPhotos": 40,
     "IsAlbumIncluded": false,
-    "PhotoOfferCategoryId": 1
+    "PhotoOfferCategoryId": 1,
+    "PhotoOfferTypeId": 2
   },
   {
     "Name": "Family Photoshoot",
@@ -57,7 +62,8 @@
     "PictureUrl": "images/photoshootsoffers/sb-ts1.png",
     "NumberOfPhotos": 20,
     "IsAlbumIncluded": false,
-    "PhotoOfferCategoryId": 3
+    "PhotoOfferCategoryId": 3,
+    "PhotoOfferTypeId": 2
   },
   {
     "Name": "Love Story",
@@ -67,7 +73,8 @@
     "PictureUrl": "images/photoshootsoffers/hat-core1.png",
     "NumberOfPhotos": 20,
     "IsAlbumIncluded": false,
-    "PhotoOfferCategoryId": 2
+    "PhotoOfferCategoryId": 2,
+    "PhotoOfferTypeId": 2
   },
   {
     "Name": "Standard Couples Phootoshoot",
@@ -77,7 +84,8 @@
     "PictureUrl": "images/photoshootsoffers/hat-react1.png",
     "NumberOfPhotos": 20,
     "IsAlbumIncluded": false,
-    "PhotoOfferCategoryId": 2
+    "PhotoOfferCategoryId": 2,
+    "PhotoOfferTypeId": 2
   },
   {
     "Name": "Baby is coming!",
@@ -87,7 +95,8 @@
     "PictureUrl": "images/photoshootsoffers/hat-react2.png",
     "NumberOfPhotos": 30,
     "IsAlbumIncluded": false,
-    "PhotoOfferCategoryId": 4
+    "PhotoOfferCategoryId": 4,
+    "PhotoOfferTypeId": 1
   },
   {
     "Name": "Company Event",
@@ -97,6 +106,29 @@
     "PictureUrl": "images/photoshootsoffers/glove-code1.png",
     "NumberOfPhotos": 100,
     "IsAlbumIncluded": false,
-    "PhotoOfferCategoryId": 6
+    "PhotoOfferCategoryId": 6,
+    "PhotoOfferTypeId": 3
+  },
+  {
+    "Name": "Couples Studio Phootoshoot",
+    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc.",
+    "Price": 300,
+    "Duration": 1,
+    "PictureUrl": "images/photoshootsoffers/hat-react1.png",
+    "NumberOfPhotos": 20,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 2,
+    "PhotoOfferTypeId": 1
+  },
+  {
+    "Name": "Love Story Studio Edition",
+    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero.",
+    "Price": 350,
+    "Duration": 1,
+    "PictureUrl": "images/photoshootsoffers/hat-core1.png",
+    "NumberOfPhotos": 20,
+    "IsAlbumIncluded": false,
+    "PhotoOfferCategoryId": 2,
+    "PhotoOfferTypeId": 1
   }
 ]

@@ -14,6 +14,7 @@ namespace API.Helpers
         {
             CreateMap<PhotoOffer, PhotoOfferToReturnDto>()
                 .ForMember(d => d.PhotoOfferCategory, o => o.MapFrom(s => s.PhotoOfferCategory.Name))
+                .ForMember(d => d.PhotoOfferType, o => o.MapFrom(s => s.PhotoOfferType.Name))
                 .ForMember(d => d.PictureUrl, o => o.MapFrom<PhotoOfferUrlResolver>());
         }
     }

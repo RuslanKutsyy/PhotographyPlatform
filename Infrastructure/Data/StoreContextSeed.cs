@@ -28,6 +28,19 @@ namespace Infrastructure.Data
                     await context.SaveChangesAsync();
                 }
 
+                if (!context.PhotoOffersTypes.Any())
+                {
+                    var typesData = File.ReadAllText("../Infrastructure/Data/SeedData/PhotoOffersTypes.json");
+                    var types = JsonSerializer.Deserialize<List<PhotoOfferType>>(typesData);
+
+                    foreach (var type in types)
+                    {
+                        context.PhotoOffersTypes.Add(type);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
                 if (!context.PhotoOffers.Any())
                 {
                     var offersData = File.ReadAllText("../Infrastructure/Data/SeedData/PhotoOffers.json");

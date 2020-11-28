@@ -11,5 +11,7 @@
         public bool IsAlbumIncluded { get; set; }
         public PhotoOfferCategory PhotoOfferCategory { get; set; }
         public int PhotoOfferCategoryId { get; set; }
+        public PhotoOfferType PhotoOfferType { get; set; }
+        public int PhotoOfferTypeId { get; set; }
     }
 }

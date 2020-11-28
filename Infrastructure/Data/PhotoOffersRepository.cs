@@ -19,17 +19,22 @@ namespace Infrastructure.Data
 
         public async Task<PhotoOffer> GetPhotoOfferByIdAsync(int id)
         {
-            return await storeContext.PhotoOffers.Include(p => p.PhotoOfferCategory).FirstOrDefaultAsync(p => p.Id == id);
+            return await storeContext.PhotoOffers.Include(p => p.PhotoOfferCategory).Include(p => p.PhotoOfferType).FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IReadOnlyList<PhotoOffer>> GetPhotoOffersAsync()
         {
-            return await storeContext.PhotoOffers.Include(p => p.PhotoOfferCategory).ToListAsync();
+            return await storeContext.PhotoOffers.Include(p => p.PhotoOfferCategory).Include(p => p.PhotoOfferType).ToListAsync();
         }
 
         public async Task<IReadOnlyList<PhotoOfferCategory>> GetPhotoOffersCategoriesAsync()
         {
             return await storeContext.PhotoOffersCategories.ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<PhotoOfferType>> GetPhotoOffersTypesAsync()
+        {
+            return await storeContext.PhotoOffersTypes.ToListAsync();
         }
     }
 }

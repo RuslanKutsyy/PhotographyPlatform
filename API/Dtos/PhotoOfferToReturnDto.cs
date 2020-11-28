@@ -16,5 +16,6 @@ namespace API.Dtos
         public int NumberOfPhotos { get; set; }
         public bool IsAlbumIncluded { get; set; }
         public string PhotoOfferCategory { get; set; }
+        public string PhotoOfferType { get; set; }
     }
 }

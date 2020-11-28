@@ -20,6 +20,7 @@ namespace Infrastructure.Data.Config
             builder.Property(p => p.IsAlbumIncluded).IsRequired();
             builder.Property(p => p.PictureUrl).IsRequired();
             builder.HasOne(c => c.PhotoOfferCategory).WithMany().HasForeignKey(c => c.PhotoOfferCategoryId);
+            builder.HasOne(c => c.PhotoOfferType).WithMany().HasForeignKey(c => c.PhotoOfferTypeId);
         }
     }
 }

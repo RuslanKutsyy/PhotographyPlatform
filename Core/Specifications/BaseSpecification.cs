@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Core.Specifications
 {
     public class BaseSpecification<T> : ISpecification<T>
     {
+        public Expression<Func<T, bool>> Criteria { get; }
+
+        public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
+
+        public Expression<Func<T, object>> OrderBy { get; private set; }
+
+        public Expression<Func<T, object>> OrderByDescending { get; private set; }
+
+
         public BaseSpecification()
         {
         }
@@ -15,13 +23,20 @@ namespace Core.Specifications
             Criteria = criteria;
         }
 
-        public Expression<Func<T, bool>> Criteria { get; }
-
-        public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
 
         protected void AddInclude(Expression<Func<T, object>> includeExpression)
         {
             Includes.Add(includeExpression);
+        }
+
+        protected void AddOrderBy(Expression<Func<T, Object>> orderByExpression)
+        {
+            this.OrderBy = orderByExpression;
+        }
+
+        protected void AddOrderByDescending(Expression<Func<T, Object>> orderByDescingExpression)
+        {
+            this.OrderByDescending = orderByDescingExpression;
         }
     }
 }
