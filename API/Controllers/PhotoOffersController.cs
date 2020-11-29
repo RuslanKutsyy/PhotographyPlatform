@@ -12,6 +12,7 @@ using System.Linq;
 using AutoMapper;
 using API.Errors;
 using Microsoft.AspNetCore.Http;
+using API.Helpers;
 
 namespace API.Controllers
 {
@@ -32,12 +33,17 @@ namespace API.Controllers
             this.mapper = mapper;
         }
         [HttpGet]
-        public async Task<ActionResult<List<PhotoOffer>>> GetPhotoOffers(string sort)
+        public async Task<ActionResult<Pagination<PhotoOffer>>> GetPhotoOffers([FromQuery] PhotoOfferSpecParams photoOfferParams)
         {
-            var spec = new PhotoOffersWithCategoriesAndTypesSpecification(sort);
+            var spec = new PhotoOffersWithCategoriesAndTypesSpecification(photoOfferParams);
+            var countSpec = new PhotoOfferWithFiltersForCountSpecification(photoOfferParams);
+            var totalItems = await photooffersRepo.CountAsync(countSpec);
+
             var photoshoots = await photooffersRepo.ListAsync(spec);
 
-            return Ok(mapper.Map<IReadOnlyList<PhotoOffer>, IReadOnlyList<PhotoOfferToReturnDto>>(photoshoots));
+            var data = mapper.Map<IReadOnlyList<PhotoOffer>, IReadOnlyList<PhotoOfferToReturnDto>>(photoshoots);
+
+            return Ok(new Pagination<PhotoOfferToReturnDto>(photoOfferParams.PageIndex, photoOfferParams.PageSize, totalItems, data));
         }
 
         [HttpGet("{id}")]
